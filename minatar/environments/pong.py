@@ -9,7 +9,7 @@ import numpy as np
 # Env
 # todo  write description
 #####################################################################################################################
-#todo bug in calculating reward
+# todo bug in calculating reward (what to do with edges ??)
 class Env:
     def __init__(self, ramping=None):
         self.channels = {
@@ -94,14 +94,9 @@ class Env:
     # Process the game-state into the 10x10xn state provided to the agent and return
     def state(self):
         state = np.zeros((10, 10, len(self.channels)), dtype=bool)
-        print("x:" + str(self.ball_x) + " y:" + str(self.ball_y) + " x_com= " + str(
-            self.paddle_computer_x) + " x_pla=" + str(self.paddle_player_x))
         state[self.ball_x, self.ball_y, self.channels['ball']] = 1
         state[self.paddle_player_x - 1:self.paddle_player_x + 2, 9, self.channels['paddle_player']] = 1
         state[self.paddle_computer_x - 1:self.paddle_computer_x + 2, 0, self.channels['paddle_computer']] = 1
-
-        # state[2, 0, self.channels['ball']] = 1
-        # state[:, :, self.channels['brick']] = self.brick_map
         return state
 
     # Reset to start state for new episode
