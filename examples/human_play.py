@@ -8,6 +8,10 @@
 
 import argparse
 import tkinter as Tk
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from minatar import Environment
 from minatar.gui import GUI
 
