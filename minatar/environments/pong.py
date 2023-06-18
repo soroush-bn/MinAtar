@@ -3,7 +3,7 @@
 # Soroush Baghernezhad                                                                              #
 ################################################################################################################
 import numpy as np
-
+import random
 
 #####################################################################################################################
 # Env
@@ -114,8 +114,8 @@ class Env:
 
         self.ball_x = 4
         self.ball_y = 4
-        self.ball_dx = +1
-        self.ball_dy = +1
+        self.ball_dx = random.choice([+1, -1])
+        self.ball_dy = random.choice([+1, -1])
         # refer to x_center from the 3pixel of the paddle
         # ranging between 1 to 8
         self.paddle_player_x = 5
@@ -127,8 +127,8 @@ class Env:
     def reset_after_goal(self):
         self.ball_x = 4
         self.ball_y = 4
-        self.ball_dx = +1
-        self.ball_dy = +1
+        self.ball_dx = random.choice([+1, -1])
+        self.ball_dy = random.choice([+1, -1])
 
     # Dimensionality of the game-state (10x10xn)
     def state_shape(self):
